@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import './App.css'
 
-function FriendSelect() {
+function FriendSelect({friendData}) {
 
   return(
 
     <div id="friendSideBar">
 
-      Friends
+      {friendData.map(friend => (
+
+        <p>{friend.name}</p>
+
+      ))}
 
     </div>
 
@@ -34,11 +38,18 @@ function SendMessage() {
 
 function App() {
 
+  // FRIENDS
+
+  const [friendData, setFriendData] = useState([
+    {name: "Bob"},
+    {name: "Alice"}
+  ]);
+
   return (
     <>
       <div id="appFrame">
 
-        <FriendSelect />
+        <FriendSelect friendData={friendData} />
 
         <div id="chatLogFrame">
 
