@@ -16,7 +16,7 @@ function FriendSelect({friendData, setChat}) {
       {friendData.map(friend => (
 
         <button 
-          onClick={handleButtonClick(friend)}
+          onClick={() => handleButtonClick(friend)}
           key={friend.id}>
             {friend.name}
           </button>
