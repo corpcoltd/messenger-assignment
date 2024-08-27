@@ -75,7 +75,7 @@ function SendMessage({setChat, setFriendData, selectedUser}) {
       <button 
         id="messageSendBtn"
         onClick={handleSend}
-      >Button</button>
+      >Send</button>
     </div>
 
   )
@@ -91,8 +91,9 @@ function App() {
   const [selectedUser, setSelectedUser] = useState(0);  
 
   const [friendData, setFriendData] = useState([
-    {id: 1, name: "Bob", chat: [{id: 1, message: "This is Bob!"}]},
-    {id: 2, name: "Alice", chat: [{id: 2, message: "..."}]}
+    {id: 0, name: "You", chat: [{key: 0, id: 0, message: "Remember to buy milk"}]},
+    {id: 1, name: "Bob", chat: [{key: 0, id: 1, message: "This is Bob!"}]},
+    {id: 2, name: "Alice", chat: [{key: 0, id: 2, message: "..."}]}
   ]);
 
   const friendName = {
@@ -114,7 +115,7 @@ function App() {
             {chat.map((msg) => {
 
               const msgName = friendName[msg.id];
-              console.log(msgName);
+              // console.log(msgName);
 
               return <p key={msg.key}>
                 <b>{msgName}:</b> {msg.message}
