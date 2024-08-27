@@ -2,41 +2,34 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#appFrame {
+  border: 1px solid black;
+  display: flex;
+  width: 800px;
+  height: 500px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#friendSideBar {
+  border-right: 1px solid black;
+  padding: 15px;
+  flex: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#chatLogFrame {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
-  padding: 2em;
+#chatLog {
+  padding: 15px;
+  flex: 1;
 }
 
-.read-the-docs {
-  color: #888;
+#messageFrame {
+  height: 80px;
+  display: flex;
+  border-top: 1px solid black;
 }
