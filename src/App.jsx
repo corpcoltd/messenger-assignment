@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function FriendSelect({friendData, setChat, setSelectedUser}) {
@@ -88,11 +88,11 @@ function App() {
   const [chat, setChat] = useState([]);
 
   // FRIENDS
-  const [selectedUser, setSelectedUser] = useState(0);  
+  const [selectedUser, setSelectedUser] = useState(null);  
 
   const [friendData, setFriendData] = useState([
     {id: 0, name: "You", chat: [{key: 0, id: 0, message: "Remember to buy milk"}]},
-    {id: 1, name: "Bob", chat: [{key: 0, id: 1, message: "This is Bob!"}]},
+    {id: 1, name: "Bob", chat: [{key: 0, id: 1, message: "Hello!"}, {key: 1, id: 1, message: "This is Bob!"}]},
     {id: 2, name: "Alice", chat: [{key: 0, id: 2, message: "..."}]}
   ]);
 
@@ -101,6 +101,20 @@ function App() {
     1: "Bob",
     2: "Alice"
   };
+
+  useEffect(() => {
+
+    if (friendData.length > 0 && selectedUser === null) {
+
+      const defaultUser = friendData.find(friend => friend.id === 0);
+
+      if (defaultUser) {
+        setSelectedUser(defaultUser.id);
+        setChat(defaultUser.chat);
+      }
+
+    }
+  }, [friendData, selectedUser]);
 
   return (
     <>
