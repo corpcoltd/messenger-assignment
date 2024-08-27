@@ -1,15 +1,44 @@
 import { useState } from 'react'
 import './App.css'
 
+function FriendSelect() {
+
+  return(
+
+    <div id="friendSideBar">
+
+      Friends
+
+    </div>
+
+  )
+
+}
+
+function SendMessage() {
+
+  return(
+
+    <div id="messageFrame">
+      <input
+        id="messageInput"
+        placeholder="Write your message here"
+      />
+
+      <button id="messageSendBtn">Button</button>
+    </div>
+
+  )
+
+}
+
 function App() {
 
   return (
     <>
       <div id="appFrame">
 
-        <div id="friendSideBar">
-          Friends
-        </div>
+        <FriendSelect />
 
         <div id="chatLogFrame">
 
@@ -17,14 +46,7 @@ function App() {
             Chat Log
           </div>
 
-          <div id="messageFrame">
-            <input
-              id="messageInput"
-              placeholder="Write your message here"
-            />
-
-            <button id="messageSendBtn">Button</button>
-          </div>
+          <SendMessage />
 
         </div>
 
