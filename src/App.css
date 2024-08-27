@@ -4,6 +4,8 @@
   padding: 2rem;
 }
 
+/* DIVS */
+
 #appFrame {
   border: 1px solid black;
   display: flex;
@@ -32,4 +34,16 @@
   height: 80px;
   display: flex;
   border-top: 1px solid black;
+}
+
+/* INPUT & BTN */
+
+#messageInput {
+  padding-left: 15px;
+  font-size: 20px;
+  flex: 5;
+}
+
+#messageSendBtn {
+  flex: 2;
 }

@@ -17,8 +17,15 @@ function App() {
             Chat Log
           </div>
 
-          <div id="messageFrame"></div>
-            Input & Button
+          <div id="messageFrame">
+            <input
+              id="messageInput"
+              placeholder="Write your message here"
+            />
+
+            <button id="messageSendBtn">Button</button>
+          </div>
+
         </div>
 
       </div>
