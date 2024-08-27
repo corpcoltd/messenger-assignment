@@ -30,7 +30,7 @@ function FriendSelect({friendData, setChat, setSelectedUser}) {
 
 }
 
-function SendMessage({setChat, chat}) {
+function SendMessage({setChat, setFriendData, selectedUser}) {
 
   const [inputText, setInputText] = useState("");
 
@@ -38,6 +38,14 @@ function SendMessage({setChat, chat}) {
 
     const newMessage = {key: Date.now(), id: 0, message: inputText}
     setChat(pChat => [...pChat, newMessage]);
+
+    setFriendData(pFriendData =>
+      pFriendData.map(friend =>
+        friend.id === selectedUser
+          ? {...friend, chat: [...friend.chat, newMessage]}
+          : friend
+      )
+    );
 
     setInputText("");
 
@@ -105,7 +113,7 @@ function App() {
 
           </div>
 
-          <SendMessage setChat={setChat} selectedUser={selectedUser}/>
+          <SendMessage setChat={setChat} setFriendData={setFriendData} selectedUser={selectedUser}/>
 
         </div>
 
