@@ -25,13 +25,19 @@ function FriendSelect({friendData}) {
 
 }
 
-function SendMessage() {
+function SendMessage({setChat, chat}) {
 
   const [inputText, setInputText] = useState("");
 
   const handleSend = () => {
 
-    console.log("Message: " + inputText);
+    // console.log("Message: " + inputText);
+
+    const newMessage = {id: 0, message: inputText}
+    setChat(pChat => [...pChat, newMessage]);
+
+    // console.log(chat);
+
     setInputText("");
 
   }
@@ -69,6 +75,9 @@ function SendMessage() {
 
 function App() {
 
+  // CHAT
+  const [chat, setChat] = useState([]);
+
   // FRIENDS
 
   const [friendData, setFriendData] = useState([
@@ -85,10 +94,14 @@ function App() {
         <div id="chatLogFrame">
 
           <div id="chatLog">
-            Chat Log
+            
+            {chat.map((msg) => (
+              <p key={msg.id}>{msg.message}</p>
+            ))}
+
           </div>
 
-          <SendMessage />
+          <SendMessage setChat={setChat} chat={chat}/>
 
         </div>
 
