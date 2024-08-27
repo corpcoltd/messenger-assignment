@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import './App.css'
 
-function FriendSelect({friendData, setChat}) {
+function FriendSelect({friendData, setChat, setSelectedUser}) {
 
   const handleButtonClick = (friend) => {
 
+    setSelectedUser(friend.id);
     setChat(friend.chat);
 
   }
@@ -79,29 +80,32 @@ function App() {
   const [chat, setChat] = useState([]);
 
   // FRIENDS
+  const [selectedUser, setSelectedUser] = useState(0);  
 
   const [friendData, setFriendData] = useState([
     {id: 1, name: "Bob", chat: [{id: 1, message: "This is Bob!"}]},
-    {id: 2, name: "Alice", chat: [{id: 2, message: "This is Alice!"}]}
+    {id: 2, name: "Alice", chat: [{id: 2, message: "..."}]}
   ]);
 
   return (
     <>
       <div id="appFrame">
 
-        <FriendSelect friendData={friendData} setChat={setChat}/>
+        <FriendSelect friendData={friendData} setChat={setChat} setSelectedUser={setSelectedUser}/>
 
         <div id="chatLogFrame">
 
           <div id="chatLog">
             
             {chat.map((msg) => (
-              <p key={msg.key}>{msg.message}</p>
+              <p key={msg.key}>
+                <b>{msg.id}:</b> {msg.message}
+              </p>
             ))}
 
           </div>
 
-          <SendMessage setChat={setChat}/>
+          <SendMessage setChat={setChat} selectedUser={selectedUser}/>
 
         </div>
 
