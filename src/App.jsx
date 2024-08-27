@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
 
-function FriendSelect({friendData}) {
+function FriendSelect({friendData, setChat}) {
 
   const handleButtonClick = (friend) => {
 
-    console.log("Friend-Button Clicked!");
+    console.log(friend.name);
 
   }
 
@@ -15,7 +15,11 @@ function FriendSelect({friendData}) {
 
       {friendData.map(friend => (
 
-        <button onClick={handleButtonClick} key={friend.id}>{friend.name}</button>
+        <button 
+          onClick={handleButtonClick(friend)}
+          key={friend.id}>
+            {friend.name}
+          </button>
 
       ))}
 
@@ -31,12 +35,8 @@ function SendMessage({setChat, chat}) {
 
   const handleSend = () => {
 
-    // console.log("Message: " + inputText);
-
-    const newMessage = {id: 0, message: inputText}
+    const newMessage = {key: Date.now(), id: 0, message: inputText}
     setChat(pChat => [...pChat, newMessage]);
-
-    // console.log(chat);
 
     setInputText("");
 
@@ -89,19 +89,19 @@ function App() {
     <>
       <div id="appFrame">
 
-        <FriendSelect friendData={friendData} />
+        <FriendSelect friendData={friendData} setChat={setChat}/>
 
         <div id="chatLogFrame">
 
           <div id="chatLog">
             
             {chat.map((msg) => (
-              <p key={msg.id}>{msg.message}</p>
+              <p key={msg.key}>{msg.message}</p>
             ))}
 
           </div>
 
-          <SendMessage setChat={setChat} chat={chat}/>
+          <SendMessage setChat={setChat}/>
 
         </div>
 
