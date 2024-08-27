@@ -17,6 +17,13 @@
   border-right: 1px solid black;
   padding: 15px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#friendSideBar button {
+  margin-bottom: 10px;
+  border: 1px solid black;
 }
 
 #chatLogFrame {

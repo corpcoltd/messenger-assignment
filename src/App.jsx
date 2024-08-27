@@ -3,13 +3,19 @@ import './App.css'
 
 function FriendSelect({friendData}) {
 
+  const handleButtonClick = (friend) => {
+
+    console.log("Friend-Button Clicked!");
+
+  }
+
   return(
 
     <div id="friendSideBar">
 
       {friendData.map(friend => (
 
-        <button key={friend.id}>{friend.name}</button>
+        <button onClick={handleButtonClick} key={friend.id}>{friend.name}</button>
 
       ))}
 
@@ -21,15 +27,40 @@ function FriendSelect({friendData}) {
 
 function SendMessage() {
 
+  const [inputText, setInputText] = useState("");
+
+  const handleSend = () => {
+
+    console.log("Message: " + inputText);
+    setInputText("");
+
+  }
+
+  const handleKeyDown = (e) => {
+
+      if (e.key === "Enter") {
+
+        handleSend();
+
+      }
+
+  }
+
   return(
 
     <div id="messageFrame">
       <input
         id="messageInput"
         placeholder="Write your message here"
+        onKeyDown={handleKeyDown}
+        onChange={(e) => setInputText(e.target.value)}
+        value={inputText}
       />
 
-      <button id="messageSendBtn">Button</button>
+      <button 
+        id="messageSendBtn"
+        onClick={handleSend}
+      >Button</button>
     </div>
 
   )
@@ -41,8 +72,8 @@ function App() {
   // FRIENDS
 
   const [friendData, setFriendData] = useState([
-    {id: 1, name: "Bob"},
-    {id: 2, name: "Alice"}
+    {id: 1, name: "Bob", chat: [{id: 1, message: "This is Bob!"}]},
+    {id: 2, name: "Alice", chat: [{id: 2, message: "This is Alice!"}]}
   ]);
 
   return (
