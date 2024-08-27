@@ -95,6 +95,12 @@ function App() {
     {id: 2, name: "Alice", chat: [{id: 2, message: "..."}]}
   ]);
 
+  const friendName = {
+    0: "You",
+    1: "Bob",
+    2: "Alice"
+  };
+
   return (
     <>
       <div id="appFrame">
@@ -105,11 +111,15 @@ function App() {
 
           <div id="chatLog">
             
-            {chat.map((msg) => (
+            {chat.map((msg) => {
+
+              const msgName = friendName[msg.id];
+
               <p key={msg.key}>
                 <b>{msg.id}:</b> {msg.message}
               </p>
-            ))}
+
+            })}
 
           </div>
 
