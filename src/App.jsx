@@ -9,7 +9,7 @@ function FriendSelect({friendData}) {
 
       {friendData.map(friend => (
 
-        <p>{friend.name}</p>
+        <button key={friend.id}>{friend.name}</button>
 
       ))}
 
@@ -41,8 +41,8 @@ function App() {
   // FRIENDS
 
   const [friendData, setFriendData] = useState([
-    {name: "Bob"},
-    {name: "Alice"}
+    {id: 1, name: "Bob"},
+    {id: 2, name: "Alice"}
   ]);
 
   return (
