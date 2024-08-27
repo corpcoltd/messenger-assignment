@@ -129,7 +129,6 @@ function App() {
             {chat.map((msg) => {
 
               const msgName = friendName[msg.id];
-              // console.log(msgName);
 
               return <p key={msg.key}>
                 <b>{msgName}:</b> {msg.message}
