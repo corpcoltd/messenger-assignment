@@ -5,7 +5,7 @@ function FriendSelect({friendData, setChat}) {
 
   const handleButtonClick = (friend) => {
 
-    console.log(friend.name);
+    setChat(friend.chat);
 
   }
 
